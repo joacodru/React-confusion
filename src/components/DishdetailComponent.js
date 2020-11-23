@@ -1,11 +1,7 @@
-import react, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap'
+import React, { Component } from 'react';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap'
 
 class DishDetail extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     formatter = new Intl.DateTimeFormat("en-GB", {
         year: "numeric",
@@ -53,13 +49,15 @@ class DishDetail extends Component {
     render() {
         if (this.props.dish != null ){
             return(
-                <div className="row">
-                    <div className="col-12 col-md-5 m-1">
-                        {this.renderDish()}
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-md-5 m-1">
+                            {this.renderDish()}
+                        </div>
+                        <div className="col-12 col-md-5 m-1">
+                            {this.renderComments(this.props.dish.comments)}
+                        </div>      
                     </div>
-                    <div className="col-12 col-md-5 m-1">
-                        {this.renderComments(this.props.dish.comments)}
-                    </div>      
                 </div>
             );
         }
